@@ -13,8 +13,13 @@ const ContactForm = () => {
   return (
     <div className="App">
       <form onSubmit={handleSubmit(onSubmit)}>
+
+        {/* FIRST NAME INPUT */}
         <div>
-          <label htmlFor="firstName">First Name*</label>
+          <label htmlFor="firstName">
+            First Name*
+          </label>
+
           <input
             name="firstName"
             placeholder="Edd"
@@ -25,8 +30,12 @@ const ContactForm = () => {
           )}
         </div>
 
+        {/* LAST NAME INPUT */}
         <div>
-          <label htmlFor="lastName">Last Name*</label>
+          <label htmlFor="lastName">
+            Last Name*
+          </label>
+
           <input
             name="lastName"
             placeholder="Burke"
@@ -37,25 +46,42 @@ const ContactForm = () => {
           )}
         </div>
 
+        {/* EMAIL INPUT */}
         <div>
-          <label htmlFor="email" placeholder="bluebill1049@hotmail.com">
+          <label htmlFor="email">
             Email*
           </label>
-          <input name="email" ref={register({ required: true })} />
+
+          <input 
+            name="email"
+            placeholder="bluebill1049@hotmail.com"
+            ref={register({ required: true })} 
+          />
           {errors.email && (
             <p>Looks like there was an error: {errors.email.type}</p>
           )}
         </div>
+
+        {/* MESSAGE INPUT */}
         <div>
-          <label htmlFor="message">Message</label>
-          <textarea name="message" ref={register({ required: false })} />
+          <label htmlFor="message">
+            Message
+          </label>
+
+          <textarea
+            data-testid="message"
+            name="message"
+            ref={register({ required: false })} 
+          />
         </div>
+
+        {/* RESULT OF FORM SUBMISSION */}
         {data && (
-          <pre style={{ textAlign: "left", color: "white" }}>
+          <pre data-testid="result" style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}
           </pre>
         )}
-        <input type="submit" />
+        <input type="submit" data-testid='submit' />
       </form>
     </div>
   );
